@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
+import { ClientesService } from '../services/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -9,13 +10,23 @@ import { Router } from '@angular/router';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor( private router: Router) { }
+  nome: string;
+
+  constructor( 
+    private router: Router,
+    private service: ClientesService,
+    ) { }
 
   ngOnInit(): void {
   }
 
   clientesLista(){
     this.router.navigate(['/clientes-list']);
+  }
+
+  buscarCliente(){
+    console.log(this.nome);
+    this.router.navigate([`/clientes-list/nome`, this.nome])
   }
 
 }

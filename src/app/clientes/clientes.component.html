@@ -1,12 +1,14 @@
 <div class="container mt-5">
-  <div class="row mt-4">
-    <div class="col-md-6">
-      <input type="text" class="form-control" placeholder="Buscar Cliente...">
+  <form #consultarForm="ngForm" (submit)="buscarCliente()">
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Buscar Cliente..." [(ngModel)]="nome" name="nome">
+      </div>
+      <div class="col-md-6 text-right">
+        <button class="btn btn-success" type="submit">Buscar</button>
+      </div>
     </div>
-    <div class="col-md-6 text-right">
-      <button class="btn btn-success">Buscar</button>
-    </div>
-  </div>
+  </form>
   <br>
   <div class="row">
     <div class="col-md-6 text-right">

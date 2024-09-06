@@ -28,5 +28,15 @@ export class ClientesService {
     return this.http.get<any>(url);
   }
 
+  buscaClienteParam(nome: string): Observable<Cliente[]>{
+    const httpParams = new HttpParams().set("nome",nome);
+
+    const url = this.apiURL + "/nome?" + httpParams.toString();
+
+    console.log(url);
+
+    return this.http.get<any>(url);
+
+  }
 
 }

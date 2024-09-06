@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router, ActivatedRoute, Params } from '@angular/router'
 import { environment } from 'src/environments/environment';
 import { Cliente } from '../cliente';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -18,14 +20,30 @@ export class ClientesListComponent implements OnInit {
   nome: string;
   message: string;
  
-  constructor( private service : ClientesService) { 
+  constructor( 
+    private service : ClientesService,
+    private activeRoute : ActivatedRoute
+  ) { 
     
   }
 
   ngOnInit(): void {
-    this.service
-    .getCliente()
-    .subscribe( reposta => this.clientes = reposta);
+    let params : Observable<Params> = this.activeRoute.params;
+
+    params.subscribe( urlParams => {
+      this.nome = urlParams['nome'];
+      if(this.nome){
+        this.service.buscaClienteParam(this.nome)
+        .subscribe( reposnse =>{
+          this.clientes = reposnse;
+        }
+        )
+      }else{
+        this.service
+        .getCliente()
+        .subscribe( reposta => this.clientes = reposta);
+      }
+    })
   }
 
   buscarCliente(){
