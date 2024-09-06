@@ -1,19 +1,30 @@
 <div class="container-fluid">
-<table class="table table-striped" >
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Endereço</th>
-      <th scope="col">Telefone</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let cliente of clientes">
-      <th scope="row">{{ cliente.id }}</th>
-      <td>{{ cliente.nome }}</td>
-      <td>{{ cliente.endereco }}</td>
-      <td>{{ cliente.telefone }}</td>
-  </tbody>
-</table>
+  <form #consultarForm="ngForm" (submit)="buscarCliente()">
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Buscar Cliente..." [(ngModel)]="nome" name="nome">
+      </div>
+      <div class="col-md-6 text-right">
+        <button class="btn btn-success" type="submit">Buscar</button>
+      </div>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Telefone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <th scope="row">{{ cliente.id }}</th>
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.endereco }}</td>
+        <td>{{ cliente.telefone }}</td>
+    </tbody>
+  </table>
 </div>
