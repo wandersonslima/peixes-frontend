@@ -39,4 +39,8 @@ export class ClientesService {
 
   }
 
+  salvarCliente( cliente: Cliente) : Observable<Cliente>{
+    return this.http.post<Cliente>(this.apiURL, cliente);
+  }
+
 }

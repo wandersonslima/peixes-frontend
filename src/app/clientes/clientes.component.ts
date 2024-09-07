@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { ClientesService } from '../services/clientes.service';
 
 @Component({
@@ -12,19 +12,23 @@ export class ClientesComponent implements OnInit {
 
   nome: string;
 
-  constructor( 
+  constructor(
     private router: Router,
     private service: ClientesService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
   }
 
-  clientesLista(){
+  clientesLista() {
     this.router.navigate(['/clientes-list']);
   }
 
-  buscarCliente(){
+  clientesForm() {
+    this.router.navigate(['/clientes-form']);
+  }
+
+  buscarCliente() {
     console.log(this.nome);
     this.router.navigate([`/clientes-list/nome`, this.nome])
   }

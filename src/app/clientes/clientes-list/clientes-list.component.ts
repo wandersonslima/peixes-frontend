@@ -22,7 +22,8 @@ export class ClientesListComponent implements OnInit {
  
   constructor( 
     private service : ClientesService,
-    private activeRoute : ActivatedRoute
+    private activeRoute : ActivatedRoute,
+    private router : Router
   ) { 
     
   }
@@ -59,5 +60,5 @@ export class ClientesListComponent implements OnInit {
       console.log(this.clientes);
     })
   }
-
 }
+

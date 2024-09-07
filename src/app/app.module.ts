@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ClientesService } from './services/clientes.service';
 import { FormsModule } from '@angular/forms';
 import { ClientesComponent } from './clientes/clientes.component';
+import { ClientesFormComponent } from './clientes/clientes-form/clientes-form.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ClientesComponent } from './clientes/clientes.component';
     HeaderComponent,
     FooterComponent,
     ClientesComponent,
+    ClientesFormComponent,
   ],
   imports: [
     BrowserModule,
