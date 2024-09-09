@@ -9,9 +9,12 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientesService } from './services/clientes.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClientesFormComponent } from './clientes/clientes-form/clientes-form.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 
 @NgModule({
@@ -22,16 +25,18 @@ import { ClientesFormComponent } from './clientes/clientes-form/clientes-form.co
     HeaderComponent,
     FooterComponent,
     ClientesComponent,
-    ClientesFormComponent,
+    ClientesFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
-    ClientesService
+    ClientesService,
   ],
   bootstrap: [AppComponent]
 })

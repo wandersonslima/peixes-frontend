@@ -11,5 +11,30 @@ body {
     width: 100%;
     font-size: 18px;
     padding: 10px;
+    margin-top: 1%;
+  }
+
+  button.btn-success {
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 1%;
+  }
+  span {
+    color: red;
+    animation: blink 2s infinite;
+    font-size: 0.75rem;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
   }
   

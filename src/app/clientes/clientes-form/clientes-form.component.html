@@ -1,39 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Clientes</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="container mt-5">
         <h2>Cadastro de Clientes</h2>
-        <form #clienteForm="ngForm" (ngSubmit)="salvarCliente()">
-            <div class="form-group">
-                <label for="nome">Nome Completo</label>
-                <input type="text" class="form-control" placeholder="Digite seu nome" required="" autocomplete="off" name="nome" [(ngModel)]="cliente.nome">
+        <form [formGroup]="formulario" (ngSubmit)="salvarCliente()">
+
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" placeholder="Digite seu nome" autocomplete="off" formControlName="nome">
+                <ng-container *ngIf="formulario.controls.nome.touched">
+                    <span *ngIf="formulario.controls.nome.errors" class="text-danger">Campo obrigatório!</span>
+                </ng-container>
             </div>
 
-            <div class="form-group">
-                <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" placeholder="Digite seu endereço" required autocomplete="off" name="endereco" [(ngModel)]="cliente.endereco">
+            <div class="mb-3">
+                <label for="endereco" class="form-label">Endereço</label>
+                <input type="text" class="form-control" placeholder="Digite seu endereço" autocomplete="off" formControlName="endereco">
+                <ng-container *ngIf="formulario.controls.endereco.touched">
+                    <span *ngIf="formulario.controls.endereco.errors" class="text-danger">Campo obrigatório!</span>
+                </ng-container>
             </div>
 
-            <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="tel" class="form-control" placeholder="Digite seu telefone" required autocomplete="off" name="telefone" [(ngModel)]="cliente.telefone">
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="tel" class="form-control" placeholder="Digite seu telefone" autocomplete="off" formControlName="telefone" mask="(00) 00000-0000">
+                <ng-container *ngIf="formulario.controls.telefone.touched">
+                    <span *ngIf="formulario.controls.telefone.errors" class="text-danger">Campo obrigatório!</span>
+                </ng-container>
             </div>
 
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-success" [disabled]="!formulario.valid">Cadastrar</button>
+            <button type="button" class="btn btn-primary" (click)="voltarClientes()">Voltar</button>
         </form>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-</html>

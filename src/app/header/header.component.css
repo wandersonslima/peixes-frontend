@@ -1,0 +1,17 @@
+.navbar {
+    letter-spacing: 1px; /* Aumenta o espaçamento entre letras */
+  }
+  
+  .nav-link {
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #f8d210; /* Cor dourada no hover para destaque */
+    border-bottom: 2px solid #f8d210; /* Adiciona uma linha dourada no hover */
+  }
+  
+  .navbar-brand:hover {
+    color: #f8d210; /* Cor dourada no hover */
+  }
+  

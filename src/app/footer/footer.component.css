@@ -31,6 +31,7 @@ footer {
   
   .footer-section a:hover {
     color: #fff;
+    text-decoration: underline;
   }
   
   .footer-bottom {
@@ -44,3 +45,8 @@ footer {
     margin: 0;
     font-size: 14px;
   }
+
+  footer a {
+    text-decoration: none;
+  }
+  

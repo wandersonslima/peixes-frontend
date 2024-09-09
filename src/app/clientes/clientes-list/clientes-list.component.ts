@@ -42,9 +42,18 @@ export class ClientesListComponent implements OnInit {
       }else{
         this.service
         .getCliente()
-        .subscribe( reposta => this.clientes = reposta);
+        .subscribe( reposta => {
+          this.clientes = reposta;
+          console.log(this.clientes);
+        }
+        );
+        
       }
     })
+  }
+
+  voltarClientes(){
+    this.router.navigate(['/clientes']);
   }
 
   buscarCliente(){
