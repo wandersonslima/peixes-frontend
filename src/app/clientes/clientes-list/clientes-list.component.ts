@@ -34,7 +34,7 @@ export class ClientesListComponent implements OnInit {
     params.subscribe( urlParams => {
       this.nome = urlParams['nome'];
       if(this.nome){
-        this.service.buscaClienteParam(this.nome)
+        this.service.buscaCliente(this.nome)
         .subscribe( reposnse =>{
           this.clientes = reposnse;
         }

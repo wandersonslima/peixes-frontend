@@ -26,6 +26,9 @@
         <td>{{ cliente.nome }}</td>
         <td>{{ cliente.endereco }}</td>
         <td id="telefone" name="telefone">{{ cliente.telefone | mask: '(00) 00000-0000'}}</td>
+        <td>
+          <button class="btn btn-primary" routerLink="/clientes-form/{{ cliente.id }}">Editar</button>
+        </td>
     </tbody>
   </table>
 </div>
