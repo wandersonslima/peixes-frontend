@@ -1,34 +1,74 @@
 <div class="container-fluid">
   <form #consultarForm="ngForm" (submit)="buscarCliente()">
-    <div class="row mt-4">
+    <div class="row mt-4 align-items-center">
       <div class="col-md-6">
         <input type="text" class="form-control" placeholder="Buscar Cliente..." [(ngModel)]="nome" name="nome">
       </div>
-      <div class="col-md-6 text-right">
-        <button class="btn btn-success" type="submit">Buscar</button>
-        <button class="btn btn-primary" type="button" (click)="voltarClientes()">Voltar</button>
+      <div class="col-md-6 text-md-end mt-2 mt-md-0">
+        <button class="btn btn-success me-2" type="submit">Buscar</button>
+        <button class="btn btn-outline-primary" type="button" (click)="voltarClientes()">Voltar</button>
       </div>
     </div>
   </form>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Endereço</th>
-        <th scope="col">Telefone</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientes">
-        <th scope="row">{{ cliente.id }}</th>
-        <td>{{ cliente.nome }}</td>
-        <td>{{ cliente.endereco }}</td>
-        <td id="telefone" name="telefone">{{ cliente.telefone | mask: '(00) 00000-0000'}}</td>
-        <td>
-          <button class="btn btn-primary" routerLink="/clientes-form/{{ cliente.id }}">Editar</button>
-        </td>
-    </tbody>
-  </table>
+  <div class="table-responsive mt-4">
+    <table class="table table-hover table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Endereço</th>
+          <th scope="col">Telefone</th>
+          <th scope="col" class="text-center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <th scope="row">{{ cliente.id }}</th>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.endereco }}</td>
+          <td>{{ cliente.telefone | mask: '(00) 00000-0000' }}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-primary me-2" routerLink="/clientes-form/{{ cliente.id }}">
+              <i class="bi bi-pencil"></i> Editar
+            </button>
+            <button type="button" class="btn btn-sm btn-danger" (click)="abrirModalExcluir(cliente)">
+              <i class="bi bi-trash"></i> Excluir
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-light">
+        <h5 class="modal-title" id="confirmDeleteLabel">Confirmação de Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza de que deseja excluir o cliente <strong>{{ clienteDel?.nome }}</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="confirmarExclusao()" data-bs-dismiss="modal">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Cliente deletado com sucesso!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
 </div>

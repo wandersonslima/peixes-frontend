@@ -32,7 +32,7 @@ export class ClientesService {
 
     const url = this.apiURL + "/nome?" + httpParams.toString();
 
-    console.log(url);
+    //console.log(url);
 
     return this.http.get<any>(url);
   }
@@ -42,7 +42,7 @@ export class ClientesService {
 
     const url = this.apiURL + "/nome?" + httpParams.toString();
 
-    console.log(url);
+    //console.log(url);
 
     return this.http.get<any>(url);
 
@@ -54,6 +54,13 @@ export class ClientesService {
 
   atualizarCliente( cliente: Cliente) : Observable<Cliente>{
     return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}`, cliente);
+  }
+
+  deletarCliente(id: number) : Observable<Cliente>{
+    let params = new HttpParams().set("id", id.toString())
+    let url = this.apiURL + "/" + params;
+    console.log(url)
+    return this.http.delete<any>(`${this.apiURL}/${id}`);
   }
 
 }

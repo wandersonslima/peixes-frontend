@@ -72,7 +72,8 @@ export class ClientesFormComponent implements OnInit {
         let t = response;
         console.log(response);
         console.log(this.cliente);
-      }), console.log("Erro ao atualizar");
+      }), error => {
+        console.log("Erro ao atualizar");}
     }else{
       if (!this.formulario.valid) {
         console.log("Formulário Inválido!!");
